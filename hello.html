@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Love Book for Kaila</title> 
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- General Setup & Hiding Pages --- */
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background-color: #fff; 
+            font-family: 'Arial', sans-serif;
+        }
+
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            box-sizing: border-box;
+        }
+
+        /* --- Page 1: The Cover Style (Deep Magenta & Ruby Pink) --- */
+        #cover-page {
+            display: flex; 
+            height: 100vh; 
+            width: 100%;
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            background-color: #8B008B; /* Dark Magenta Background */
+            color: #fff; 
+            text-align: center;
+            overflow: hidden; 
+        }
+
+        .cover-title {
+            font-size: 5em; 
+            font-weight: 700;
+            color: #FFC0CB; /* Light Pink Title */
+            margin-bottom: 50px;
+            letter-spacing: 5px;
+            animation: pulse 2s infinite alternate; 
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        #open-me-btn { 
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fff;
+            background-color: #E91E63; /* Ruby Pink Button */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #open-me-btn:hover {
+            background-color: #C2185B; 
+        }
+
+        /* --- Page 2, 3, 4, 5: Content Containers --- */
+        .content-container {
+            max-width: 700px; 
+            margin: 40px auto; 
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+            line-height: 1.6; 
+        }
+
+        /* --- Page 2: Letter Specific Styles (Rose Taupe with Accent) --- */
+        #letter-page {
+            background-color: #F8F8FF; /* Ghost White Background */
+        }
+        #letter-page .content-container {
+            background-color: #E6E6FA; /* Lavender Blush Container */
+            font-family: 'Georgia', serif; 
+            color: #4B0082; /* Indigo Text */
+        }
+        .opening-line { font-size: 1.8em; font-weight: bold; color: #DA70D6; /* Orchid Accent */ margin-bottom: 25px; border-bottom: 2px solid #D8BFD8; padding-bottom: 10px; }
+        .letter-paragraph { 
+            margin-bottom: 20px; 
+            text-align: left; 
+            text-indent: 40px; 
+        }
+        .closing-line { margin-top: 30px; text-align: right; font-style: italic; color: #C71585; /* Medium Violet Red */ font-size: 1.1em; }
+
+        /* --- Page 3: Apology Page Styles (Hot Pink Focus) --- */
+        #apology-page {
+            background-color: #FF69B4; /* Hot Pink Background */
+        }
+
+        #apology-page .content-container {
+            background-color: rgba(255, 255, 255, 0.95); /* Nearly White Container */
+            padding: 40px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            font-family: 'Montserrat', sans-serif; 
+            color: #333; 
+        }
+
+        .apology-title {
+            font-size: 2.2em;
+            text-align: center;
+            color: #DC143C; /* Crimson Red for emphasis */
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif; 
+            font-weight: bold;
+        }
+
+        .apology-opening, .apology-closing {
+            font-size: 1.2em;
+            font-style: italic;
+            margin-bottom: 25px;
+            color: #555;
+        }
+        .apology-opening { text-align: left; }
+        .apology-closing { text-align: right; margin-top: 30px; }
+
+        .apology-paragraph {
+            margin-bottom: 1.5em;
+            line-height: 1.8;
+            text-align: left;
+            text-indent: 40px; 
+        }
+
+        /* --- Page 4: Reasons Page Styles (Soft Rose & Fuchsia) --- */
+        #reasons-page {
+            background-color: #FEE7F2; /* Softest Pink Background */
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .reasons-container {
+            background-color: #fff;
+            padding: 50px;
+        }
+
+        .reasons-title {
+            font-size: 2.5em;
+            text-align: center;
+            color: #FF00FF; /* Fuchsia Title */
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .category-item {
+            background-color: #FFF0F5; /* Floral White Box Background */
+            padding: 15px; 
+            border-radius: 10px;
+            border: 2px solid #FF69B4; /* Pink border */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .category-heading {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #C71585; /* Medium Violet Red Header */
+            margin-bottom: 5px;
+        }
+        
+        /* Photo Box Styling - Adjusted max-height to 250px for clarity */
+        .photo-box {
+            width: 100%; 
+            max-height: 350px; 
+            overflow: hidden; 
+            margin-bottom: 10px;
+            border-radius: 6px;
+        }
+
+        .photo-box img {
+            width: 100%;
+            height: 100%; 
+            display: block; 
+            object-fit: cover;
+            border-radius: 6px;
+        }
+        
+        .category-caption {
+            font-size: 0.85em;
+            font-style: italic;
+            color: #555;
+            margin-top: 8px;
+        }
+        
+        /* --- Page 5: Final Page Styles (Misty Rose & Deep Pink) --- */
+        #final-page {
+            background-color: #FFE4E1; /* Misty Rose Background */
+        }
+
+        .final-container {
+            background-color: #fff;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .final-title {
+            font-size: 2.8em;
+            color: #FF1493; /* Deep Pink Title */
+            margin-bottom: 50px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .moment-heading {
+            font-size: 1.5em;
+            color: #B22222; /* Firebrick Heading */
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* Photo Groups */
+        .photo-group {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .official-photos {
+            gap: 15px;
+        }
+
+        /* Photo Box Sizes */
+        .photo-box-small {
+            width: 30%;
+            max-height: 250px; 
+            overflow: hidden;
+            border: 4px solid #FFC0CB; /* Light pink frame */
+            border-radius: 8px;
+        }
+
+        .photo-box-large {
+            width: 80%;
+            max-height: 350px; 
+            overflow: hidden;
+            border: 5px solid #FF69B4; /* Hot pink frame */
+            border-radius: 10px;
+            margin: 0 auto;
+        }
+
+        .photo-box-small img, .photo-box-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Caption DISPLAY Box (Now a fixed DIV) */
+        .moment-caption-box {
+            width: 90%;
+            max-width: 600px;
+            padding: 10px;
+            font-size: 1em;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-style: italic;
+            min-height: 50px;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            margin-left: auto; 
+            margin-right: auto;
+            white-space: pre-wrap; 
+            color: #333; /* Dark text for contrast */
+            background-color: #FFF0F5; /* Floral White for the box background */
+        }
+
+        .section-divider {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #FF69B4, rgba(0, 0, 0, 0));
+            margin: 50px 0;
+        }
+        
+        .final-closing-note {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #D9534F;
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        /* --- Navigation Button Style --- */
+        .navigation-controls {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px dashed #ddd;
+        }
+
+        .nav-button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 1em;
+            font-weight: 600;
+            color: #fff; /* White text for contrast */
+            background-color: #DA70D6; /* Orchid pink buttons */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background-color: #C71585; /* Medium Violet Red hover */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cover-page">
+        <div class="cover-title">
+            Love Love Love Kaila :)
+        </div>
+        <button id="open-me-btn">
+            Open Me
+        </button>
+    </div>
+
+    <div id="letter-page" class="page">
+        <div class="content-container">
+            <div class="opening-line">
+                My Dearest Kaila,
+            </div>
+
+            <p class="letter-paragraph">
+                Hello Kaila, I've made this website for us, for our relationship. For the future of us, the 2 years of us being together has been really fun, it gave me the joy, the smile, and the happiness that I didn't receive ever in my life. You were the person that made me laugh hysterically without anyone seeing the side of me, you were the only person to give me love that I never felt in my entire life, even from my parents. I am really grateful of you that you came into my life, I am blessed by God for blessing me the greatest gift that I have ever received.
+            </p>
+
+            <p class="letter-paragraph">
+                Our relationship have been rough, yes it can be exhausting at some points as time passes, it can be sad, happy, or even angry at some point, but that was never a hurdle for the both of us, we kept on striving for the better good. 2 years, ahh, it feels like heaven having to spend these times that have passed with you, it is really a gift you can be really grateful of, you are the embodiment of the most precious gift (only for me of course, hehe). Even if we have our misunderstandings, conflicts, arguments, we must try and try until we eventually succeed, at some point in time God will always provide our needs for the both of us, patience is the key for this. I didn't regret a single day of my life spending my time with you, it was never a waste but it was a gift, even seconds cannot be taken for granted, every second must be held like a precious diamond, with care and of course with love. I would spend my whole time with you, counting the minimals of seconds with you rather than doing unnecessary stuff that isn't connected with you. I would cherish each second, nanosecond, millisecond like a dime that is very important. You are my four leaf clover, my lucky one, my charm, my love, my everything, my precious, my wife, my only one. You colored my dul life book into an alive and vivid book that bloomed bright colors. I love you with all my heart and that will never change, my love for you is eternal and forever. I love you with all of my heart! 🌹💞
+            </p>
+
+            <div class="closing-line">
+                Loving you forever and always,<br>
+                [Adley Ziv Capena Diman]
+            </div>
+
+            <div class="navigation-controls">
+                <button id="nav-back-to-cover" class="nav-button" data-target="cover-page">
+                    &#9664; Previous
+                </button>
+                
+                <button id="nav-forward-to-next" class="nav-button" data-target="apology-page">
+                    Next Page &#9658;
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="apology-page" class="page">
+        <div class="content-container apology-container">
+            <div class="apology-opening">
+                My Dearest Kaila,
+            </div>
+
+            <h2 class="apology-title">An Apology From the Deepest Depths of my Heart, Soul, and Humanity</h2>
+
+            <p class="apology-paragraph">
+                Hello Kaila! I am not writing this letter as a form of having "makaawa" towards you but I am writing this letter from what I feel, from the deepest depths of my heart, soul and humanity. It's been a rough ride lately, I know it. We sometimes get tired, exhausted, and stressed. From the perspective of being couples, basically we are "locked" to each other having minimal freedom. We are like waves in this relationship, sometimes crashing, sometimes stable. It's like a rollercoaster of events. I am really sorry for the inactions that I have committed through our relationship, (also including when we were not official yet, and I deeply regret all of the things that I did towards you that cause you pain). It's shame for me to say that I even consider myself as a man when I hurt the one that I love the most (you). I am deeply regretting the actions that I have made and committed towards you, all of it wans't intentional rather I have the temper of my dad, very very short tempered, but I am willing to change a be a new person for you just give me the final go signal, even if it alters my whole personality and humanity just to be with you again, I will do it. As the final act. All wasn't intentional but was brought up by my pent up emotions, I think it was called as "emotional dysregulation" or having the "impossible" control of your emotions to the point irrational decisions are made. I will change for you and alter my whole attitude for u. I will be calmer, I will be quieter, I will be rational of my decisions especially when times I feel an emotional burst inside me. It was all unintentional, it wasn't out of choice but out of impulsivity caused by emotions. I am willing to change for you, even if I say this a 100 times, I am willing, willing, willing. I will not give up on you nor myself, until I become a whole new person even if it kills my negative side.
+            </p>
+
+            <p class="apology-paragraph">
+                To the part, we were sweet lovers, to terror enemies (constant fights). I will make a change of that, for the both of us to benefit on the way of our relationship. I am committed to you the whole commitment is within me, my heart seeking for you only and always be. The deepest pains that you feel I will heal that and making it as shallow as the seashore. I am sorry for everything that I shown you, the negativity, the everything that hurted you. I just want you I don't want no one, but only you to be my partner for my whole life. I will give some real realistic efforts towards my emotional and mental change, I will be more positive in our relationship and will avoid negativity and things that might kill our relationship. I will avoid things that hinder our relationship to the point that I will be your shield protecting you from things that will hurt you, even if it means that I will protect you from myself, I will do it, I am committed and dedicated to do all of that for you, for us. My words seem to be redundant and always repetitive, but this is a sign and will be a mark for a drastic change for the both of us, for our relationship and our future.  
+            </p>
+
+            <p class="apology-paragraph">
+                This apology letter towards you isn't a letter to instantly fix our problem between us, but its an assurance that I really really recognize the mistake that I have done and eventually reflecting on them. Assuring you that these words are the final act. I will do my very and absolute best to commit on these words that I have place, I will succeed for you, for us, and for our relationship I am sorry po my love, Kaila.
+            </p>
+
+            <div class="apology-closing">
+                With deepest regret and everlasting love,<br>
+                [Adley Ziv Capena Diman]
+            </div>
+
+            <div class="navigation-controls">
+                <button id="nav-back-to-letter-from-apology" class="nav-button" data-target="letter-page">
+                    &#9664; Back to Love Letter
+                </button>
+                
+                <button id="nav-forward-from-apology" class="nav-button" data-target="reasons-page">
+                    See Our Memories &#9658;
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="reasons-page" class="page">
+        <div class="content-container reasons-container">
+            <h2 class="reasons-title">I love you because you are...</h2>
+
+            <div class="category-grid">
+                
+                <div class="category-item">
+                    <p class="category-heading">Funny 😂</p>
+                    <div class="photo-box">
+                        <img src="kaila_funny.jpg.jfif" alt="Kaila so funny haha😁">
+                    </div>
+                    <p class="category-caption"> "Dame un Grr, haha what a funny Expression my love"</p>
+                </div>
+                
+                <div class="category-item">
+                    <p class="category-heading">Lovable 🤗</p>
+                    <div class="photo-box">
+                        <img src="kaila_lovable.jpg.jfif" alt="Kaila loves mee💞">
+                    </div>
+                    <p class="category-caption">"Your Love is eternal, my love is eternal. It won't break. My kaila is too lovable💞"</p>
+                </div>
+                
+                <div class="category-item">
+                    <p class="category-heading">Beautiful ✨</p>
+                    <div class="photo-box">
+                        <img src="kaila_beautiful.jpg.jfif" alt="Kaila's beauty is shining brightly!!">
+                    </div>
+                    <p class="category-caption">You are breath taking, down to earth, yet your soulful and caring attitude made me fall for you😁🌹</p>
+                </div>
+                
+                <div class="category-item">
+                    <p class="category-heading">Hungry 🍕</p>
+                    <div class="photo-box">
+                        <img src="kaila_hungry.jpg.jfif" alt="Kaila having an appetite">
+                    </div>
+                    <p class="category-caption">"Nothing beats the taste of good ol' beef curry. Yum! Yet our memories and what our future upholds will be tastier</p>
+                </div>
+                
+                <div class="category-item">
+                    <p class="category-heading">Gorgeous 😍</p>
+                    <div class="photo-box">
+                        <img src="kaila_gorgeous.jpg.jfif" alt="Kaila's eternal beuaty">
+                    </div>
+                    <p class="category-caption">"I keep this photo as it resembles you as an Artwork. Gorgeous, magnificent, flawless inside out. So Stunning😇😇</p>
+                </div>
+                
+                <div class="category-item">
+                    <p class="category-heading">Mesmerizing 💫</p>
+                    <div class="photo-box">
+                        <img src="kaila_mesmerizing.jpg.jfif" alt="Kaila being heavenly">
+                    </div>
+                    <p class="category-caption">"Lost in the depths of your eyes, a soul I have found.  A Perfect one🌟."</p>
+                </div>
+                
+            </div>
+
+            <div class="navigation-controls">
+                <button id="nav-back-to-apology" class="nav-button" data-target="apology-page">
+                    &#9664; Previous
+                </button>
+                
+                <button id="nav-forward-from-reasons" class="nav-button" data-target="final-page">
+                    See Our Happiest Moments &#9658;
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="final-page" class="page">
+        <div class="content-container final-container">
+            <h2 class="final-title">Our Happiest Moments Together ❤️</h2>
+
+            <div class="moment-section">
+                <h3 class="moment-heading">The Day We Became Official: February 13, 2025</h3>
+                
+                <div class="photo-group official-photos">
+                    <div class="photo-box-small">
+                        <img src="official_1.jpg.jfif" alt="First photo as a couple">
+                    </div>
+                    <div class="photo-box-small">
+                        <img src="official_2.jpg.jfif" alt="Second photo as a couple">
+                    </div>
+                    <div class="photo-box-small">
+                        <img src="official_3.jpg.jfif" alt="Third photo as a couple">
+                    </div>
+                </div>
+
+                <div class="moment-caption-box">
+                    "My heart bursted out of love, care, and passion as you have said the word "Yes" after almost 2 years in the talking stage you have finally said yes. I felt a sense of belonging that I only belonged to you. From that day on I felt the sense of commitment, foreseeing a future with you in the long run. I love you Kaila, my dear, my love, and my everything"
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <div class="moment-section">
+                <h3 class="moment-heading">Celebrating Your Birthday: May 29, 2025 🎉</h3>
+                
+                <div class="birthday-video-section">
+                    
+                    <div class="video-container">
+                        <h3>Video 1: Swing Swing Swing</h3>
+                        <video controls>
+                            <source src="swing_kaila.mp4.mp4" type="video/mp4">
+                        </video>
+                        <p class="video-caption">
+                            Glad I made your birthday blues go away : ]
+                        </p>
+                    </div>
+                
+                    <div class="video-container">
+                        <h3>Video 2: Swing Swing</h3>
+                        <video controls>
+                            <source src="swing_kaila2.mp4.mp4" type="video/mp4">
+                        </video>
+                        <p class="video-caption">
+                           We Are So Happy, Swinging Around!!!!!!
+                        </p>
+                    </div>
+                
+                 
+                
+                </div>
+
+            <div class="navigation-controls">
+                <button id="nav-back-to-reasons" class="nav-button" data-target="reasons-page">
+                    &#9664; Previous
+                </button>
+            </div>
+
+            <p class="final-closing-note">This is ony the beginning Kaila. More to Come, more to expect, hehe. I love you my love. My hubby. My Four Leaf Clover!</p>
+        </div>
+    </div>
+    
+    <script>
+        // List all page IDs
+        const pages = ['cover-page', 'letter-page', 'apology-page', 'reasons-page', 'final-page']; 
+        
+        // Function to hide all pages and show the specified one
+        function showPage(targetId) {
+            pages.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.style.display = 'none';
+                }
+            });
+
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                // Use 'flex' for cover-page to keep it centered, 'block' for others
+                targetElement.style.display = (targetId === 'cover-page' ? 'flex' : 'block');
+                window.scrollTo(0, 0); 
+            }
+        }
+
+        // --- Event Listeners ---
+
+        // 1. "Open Me" Button (Cover to Letter)
+        document.getElementById('open-me-btn').addEventListener('click', function() {
+            showPage('letter-page');
+        });
+
+        // 2. Navigation Buttons (General Forward/Backward)
+        document.querySelectorAll('.nav-button').forEach(button => {
+            if (button.id !== 'open-me-btn') {
+                button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    
+                    // Logic to handle all specific navigation
+                    if (button.id === 'nav-forward-to-next') {
+                        showPage('apology-page'); // Letter -> Apology
+                    } else if (button.id === 'nav-forward-from-apology') {
+                        showPage('reasons-page'); // Apology -> Reasons
+                    } else if (button.id === 'nav-forward-from-reasons') {
+                        showPage('final-page'); // Reasons -> FINAL PAGE
+                    } else if (button.id === 'nav-back-to-letter-from-apology') {
+                        showPage('letter-page'); // Apology -> Letter
+                    } else if (button.id === 'nav-back-to-cover') {
+                        showPage('cover-page'); // Letter -> Cover
+                    } else if (button.id === 'nav-back-to-apology' || button.id === 'nav-back-to-reasons') {
+                        showPage(targetId); // Previous page logic
+                    }
+                });
+            }
+        });
+
+        // Initial setup: ensure the cover page is visible when the browser loads
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('cover-page');
+        });
+        
+    </script>
+
+</body>
+</html>
